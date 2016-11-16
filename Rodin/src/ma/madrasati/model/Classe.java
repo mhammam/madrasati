@@ -3,12 +3,13 @@ package ma.madrasati.model;
 import java.util.Set;
 
 public class Classe {
+	
 	private String code;
 	private Niveau refNiveau;
 	private AnneeScolaire refAnneeScolaire;
 	private Set<ProffesseurMatiere> refProffesseurs;
 	private Set<UserAccount> refEleves;
-	private Salle refSalle;
+	private Set<SalleMatiere> refSalleMetieres;
 	
 	
 	public Niveau getRefNiveau() {
@@ -41,12 +42,11 @@ public class Classe {
 	public void setRefEleves(Set<UserAccount> refEleves) {
 		this.refEleves = refEleves;
 	}
-	public Salle getRefSalle() {
-		return refSalle;
+	public Set<SalleMatiere> getRefSalleMetiere() {
+		return refSalleMetieres;
 	}
-	public void setRefSalle(Salle refSalle) {
-		this.refSalle = refSalle;
+	public void setRefSalleMetiere(Set<SalleMatiere> refSalleMetiere) {
+		this.refSalleMetieres = refSalleMetiere;
 	}
-	
-	
+		
 }
