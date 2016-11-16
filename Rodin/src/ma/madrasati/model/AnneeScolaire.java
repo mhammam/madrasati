@@ -1,5 +1,9 @@
 package ma.madrasati.model;
-
+/**
+ * 
+ * 
+ * @author mhammam
+ */
 import java.util.Date;
 
 public class AnneeScolaire {
