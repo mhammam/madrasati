@@ -2,10 +2,25 @@ package ma.madrasati.model;
 
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+@Entity
 public class ProffesseurMatiere {
+	@ManyToOne
+	@JoinColumn(name="id")
 	private Proffesseur refProffesseur;
+	@ManyToOne
+	@JoinColumn(name="id")
 	private Matiere refMatiere;
+	@Column
 	private Date dateDebut;
+	@Column
 	private Date dateFin;
 	
 	public Proffesseur getRefProffesseur() {
@@ -32,6 +47,15 @@ public class ProffesseurMatiere {
 	public void setDateFin(Date dateFin) {
 		this.dateFin = dateFin;
 	}
-	
-	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private long id;
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
 }

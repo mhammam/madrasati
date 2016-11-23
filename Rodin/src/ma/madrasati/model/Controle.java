@@ -2,10 +2,25 @@ package ma.madrasati.model;
 
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+@Entity
 public class Controle {
+	@Column
 	private String code;
+	@Column
 	private Date dateControle;
+	@ManyToOne
+	@JoinColumn(name="id")
 	private Matiere refMatiere;
+	@ManyToOne
+	@JoinColumn(name="id")
 	private Classe refClasse;
 	
 	public String getCode() {
@@ -32,8 +47,17 @@ public class Controle {
 	public void setRefClasse(Classe refClasse) {
 		this.refClasse = refClasse;
 	}
-	
-	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private long id;
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
 	
 
 }

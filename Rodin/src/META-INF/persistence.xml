@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+	<persistence-unit name="Rodin">
+		<class>ma.madrasati.model.AnneeScolaire</class>
+		<class>ma.madrasati.model.AttestationScolarite</class>
+		<class>ma.madrasati.model.Avis</class>
+		<class>ma.madrasati.model.Classe</class>
+		<class>ma.madrasati.model.Controle</class>
+		<class>ma.madrasati.model.Demande</class>
+		<class>ma.madrasati.model.DemandeAvis</class>
+		<class>ma.madrasati.model.Matiere</class>
+		<class>ma.madrasati.model.Niveau</class>
+		<class>ma.madrasati.model.Note</class>
+		<class>ma.madrasati.model.Proffesseur</class>
+		<class>ma.madrasati.model.ProffesseurMatiere</class>
+		<class>ma.madrasati.model.RendezVous</class>
+		<class>ma.madrasati.model.Salle</class>
+		<class>ma.madrasati.model.SalleMatiere</class>
+		<class>ma.madrasati.model.UserAccount</class>
+	</persistence-unit>
+</persistence>

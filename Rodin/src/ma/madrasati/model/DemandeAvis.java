@@ -1,7 +1,16 @@
 package ma.madrasati.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+@Entity
 public class DemandeAvis extends Demande {
+	@ManyToOne
+	@JoinColumn(name="id")
 	private Matiere refMatiere;
+	@Column
 	private String commentaire;
 
 	public Matiere getRefMatiere() {
@@ -19,6 +28,4 @@ public class DemandeAvis extends Demande {
 	public void setCommentaire(String commentaire) {
 		this.commentaire = commentaire;
 	}
-	
-	
 }

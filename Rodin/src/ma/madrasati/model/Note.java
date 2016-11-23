@@ -1,10 +1,26 @@
 package ma.madrasati.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+@Entity
 public class Note {
+	@Column
 	private String code;
+	@Column
 	private String description;
+	@Column
 	private Float note;
+	@ManyToOne
+	@JoinColumn(name="id")
 	private Controle refControle;
+	@ManyToOne
+	@JoinColumn(name="id")
 	private UserAccount refEleve;
 	
 	
@@ -38,7 +54,16 @@ public class Note {
 	public void setRefEleve(UserAccount refEleve) {
 		this.refEleve = refEleve;
 	}
-	
-	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private long id;
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
 	
 }
