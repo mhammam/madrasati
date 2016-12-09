@@ -5,15 +5,19 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="SALLE_METIERE")
+@SequenceGenerator(name="SALLE_MAT_GEN",sequenceName="SALLE_MAT_SEQ")
 public class SalleMatiere {
-	@ManyToOne
-	@JoinColumn(name="id")
+	@OneToOne
+	@JoinColumn(name="REF_SALLE")
 	private Salle refSalle;
-	@ManyToOne
-	@JoinColumn(name="id")
+	@OneToOne
+	@JoinColumn(name="REF_MATIERE")
 	private Matiere refMatiere;
 
 	public Salle getRefSalle() {
@@ -32,7 +36,7 @@ public class SalleMatiere {
 		this.refMatiere = refMatiere;
 	}
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE,generator="SALLE_MAT_GEN")
 	private long id;
 
 	public long getId() {

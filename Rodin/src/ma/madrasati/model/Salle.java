@@ -5,14 +5,18 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="SALLE")
+@SequenceGenerator(name="SALLE_GEN",sequenceName="SALLE_SEQ")
 public class Salle {
-	@Column
+	@Column(name="CODE",unique=true,nullable=false)
 	private String code;
-	@Column
+	@Column(name="ETAGE")
 	private String etage;
-	@Column
+	@Column(name="NUMERO")
 	private Integer numero;
 	
 	public String getCode() {
@@ -34,7 +38,7 @@ public class Salle {
 		this.numero = numero;
 	}
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE,generator="SALLE_GEN")
 	private long id;
 
 	public long getId() {

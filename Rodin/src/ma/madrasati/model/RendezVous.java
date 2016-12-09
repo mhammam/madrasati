@@ -3,14 +3,21 @@ package ma.madrasati.model;
 import java.util.Date;
 
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
+@DiscriminatorValue(value="RDV")
 public class RendezVous extends Demande {
-	@Column
+	@Column(name="DATE_RDV")
+	@Temporal(TemporalType.DATE)
 	private Date dateRendezVous;
-	@Column
+	@Column(name="STATUT")
 	private String statut;
+	@Column(name="DESCRIPTION",length=250)
+	private String description;
 	
 	public Date getDateRendezVous() {
 		return dateRendezVous;
@@ -27,5 +34,15 @@ public class RendezVous extends Demande {
 	public void setStatut(String statut) {
 		this.statut = statut;
 	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	
+	
 	
 }

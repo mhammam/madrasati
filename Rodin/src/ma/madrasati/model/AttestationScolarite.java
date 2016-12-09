@@ -1,13 +1,15 @@
 package ma.madrasati.model;
 
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
 @Entity
+@DiscriminatorValue(value="SCOLARITE")
 public class AttestationScolarite extends Demande {
-	@Column
+	@Column(name="RAISON")
 	private String reasonOfAttestation;
-	@Column
+	@Column(name="STATUT")
 	private String statut;
 
 	public String getReasonOfAttestation() {

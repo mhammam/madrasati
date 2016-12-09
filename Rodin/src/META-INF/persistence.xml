@@ -16,6 +16,6 @@
 		<class>ma.madrasati.model.RendezVous</class>
 		<class>ma.madrasati.model.Salle</class>
 		<class>ma.madrasati.model.SalleMatiere</class>
-		<class>ma.madrasati.model.UserAccount</class>
+		<class>ma.madrasati.model.Eleve</class>
 	</persistence-unit>
 </persistence>

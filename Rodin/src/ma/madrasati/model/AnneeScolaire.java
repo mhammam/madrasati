@@ -4,22 +4,23 @@ package ma.madrasati.model;
  * 
  * @author mhammam
  */
-import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 
 @Entity
+@Table(name="ANNEE_SCOLAIRE")
+@SequenceGenerator(name="ANNEE_SCOLAIRE_GEN",sequenceName="ANNEE_SCOLAIRE_SEQ")
 public class AnneeScolaire {
-	@Column
+	@Column(name="CODE",unique=true)
 	private String code;
-	@Column
-	private Date annee;
+	@Column(name="ANNEE")
+	private Integer annee;
 	
 	public String getCode() {
 		return code;
@@ -29,15 +30,15 @@ public class AnneeScolaire {
 		this.code = code;
 	}
 
-	public Date getAnnee() {
+	public Integer getAnnee() {
 		return annee;
 	}
 
-	public void setAnnee(Date annee) {
+	public void setAnnee(Integer annee) {
 		this.annee = annee;
 	}
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(generator="ANNEE_SCOLAIRE_GEN",strategy=GenerationType.SEQUENCE)
 	private long id;
 
 	public long getId() {

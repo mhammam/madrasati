@@ -10,25 +10,29 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="CLASSE")
+@SequenceGenerator(name="CLASSE_GEN",sequenceName="CLASSE_SEQ")
 public class Classe {
-	@Column
+	@Column(name="CODE",unique=true)
 	private String code;
 	@ManyToOne
-    @JoinColumn (name="id")
+    @JoinColumn (name="REF_NIVEAU")
 	private Niveau refNiveau;
 	@ManyToOne
-    @JoinColumn (name="id")
+    @JoinColumn (name="REF_ANNEE_SCO")
 	private AnneeScolaire refAnneeScolaire;
 	@OneToMany
-	@JoinColumn(name="id")
+	@JoinColumn(name="REF_PROFS")
 	private Set<ProffesseurMatiere> refProffesseurs;
 	@OneToMany
-	@JoinColumn(name="id")
-	private Set<UserAccount> refEleves;
+	@JoinColumn(name="REF_ELEVES")
+	private Set<Eleve> refEleves;
 	@OneToMany
-	@JoinColumn(name="id")
+	@JoinColumn(name="REF_SALLE_MATIERES")
 	private Set<SalleMatiere> refSalleMetieres;
 	
 	
@@ -56,10 +60,10 @@ public class Classe {
 	public void setCode(String code) {
 		this.code = code;
 	}
-	public Set<UserAccount> getRefEleves() {
+	public Set<Eleve> getRefEleves() {
 		return refEleves;
 	}
-	public void setRefEleves(Set<UserAccount> refEleves) {
+	public void setRefEleves(Set<Eleve> refEleves) {
 		this.refEleves = refEleves;
 	}
 	public Set<SalleMatiere> getRefSalleMetiere() {
@@ -69,7 +73,7 @@ public class Classe {
 		this.refSalleMetieres = refSalleMetiere;
 	}
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE,generator="CLASSE_GEN")
 	private long id;
 
 	public long getId() {

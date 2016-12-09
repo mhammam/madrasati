@@ -5,12 +5,16 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="NIVEAU")
+@SequenceGenerator(name="NIVEAU_GEN",sequenceName="NIVEAU_SEQ")
 public class Niveau {
-	@Column
+	@Column(name="CODE",nullable=false,unique=true)
 	private String code;
-	@Column
+	@Column(name="LIBELLE",nullable=false)
 	private String libelle;
 	
 	public String getCode() {
@@ -26,7 +30,7 @@ public class Niveau {
 		this.libelle = libelle;
 	}
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE,generator="NIVEAU_GEN")
 	private long id;
 
 	public long getId() {

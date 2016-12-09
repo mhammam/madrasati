@@ -7,18 +7,25 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
+@Table(name="PROFFESSEUR")
+@SequenceGenerator(name="PROF_GEN",sequenceName="PROF_SEQ")
 public class Proffesseur {
-	@Column
+	@Column(name="CODE",unique=false)
 	private String code;
-	@Column
+	@Column(name="NOM")
 	private String nom;
-	@Column
+	@Column(name="PRENOM")
 	private String prenom;
-	@Column
+	@Column(name="DATE_EMBAUCHE")
+	@Temporal(TemporalType.DATE)
 	private Date dateEmbauche;
-	@Column
+	@Column(name="ANCIENNETE",nullable=false)
 	private Integer anciennete;
 	
 	
@@ -53,7 +60,7 @@ public class Proffesseur {
 		this.anciennete = anciennete;
 	}
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE,generator="PROF_GEN")
 	private long id;
 
 	public long getId() {

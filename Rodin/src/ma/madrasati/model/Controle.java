@@ -9,18 +9,22 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="CONTROLE")
+@SequenceGenerator(name="CONTROLE_GEN",sequenceName="CONTROLE_SEQ")
 public class Controle {
-	@Column
+	@Column(name="CODE",unique=true)
 	private String code;
-	@Column
+	@Column(name="DATE_CONTROLE")
 	private Date dateControle;
 	@ManyToOne
-	@JoinColumn(name="id")
+	@JoinColumn(name="REF_MATIERE")
 	private Matiere refMatiere;
 	@ManyToOne
-	@JoinColumn(name="id")
+	@JoinColumn(name="REF_CLASSE")
 	private Classe refClasse;
 	
 	public String getCode() {
@@ -48,7 +52,7 @@ public class Controle {
 		this.refClasse = refClasse;
 	}
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE,generator="CONTROLE_GEN")
 	private long id;
 
 	public long getId() {

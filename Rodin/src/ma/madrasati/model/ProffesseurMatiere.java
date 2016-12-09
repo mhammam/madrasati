@@ -8,19 +8,27 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
+@Table(name="PROF_MATIERE")
+@SequenceGenerator(name="PROF_MAT_GEN",sequenceName="PROF_MATIERE_SEQ")
 public class ProffesseurMatiere {
-	@ManyToOne
-	@JoinColumn(name="id")
+	@OneToOne
+	@JoinColumn(name="REF_PROF")
 	private Proffesseur refProffesseur;
-	@ManyToOne
-	@JoinColumn(name="id")
+	@OneToOne
+	@JoinColumn(name="REF_MAT")
 	private Matiere refMatiere;
-	@Column
+	@Column(name="DATE_DEBUT")
+	@Temporal(TemporalType.DATE)
 	private Date dateDebut;
-	@Column
+	@Column(name="DATE_FIN")
+	@Temporal(TemporalType.DATE)
 	private Date dateFin;
 	
 	public Proffesseur getRefProffesseur() {
@@ -48,7 +56,7 @@ public class ProffesseurMatiere {
 		this.dateFin = dateFin;
 	}
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE,generator="PROF_MAT_GEN")
 	private long id;
 
 	public long getId() {

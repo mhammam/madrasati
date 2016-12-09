@@ -5,10 +5,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
 @Entity
-public class UserAccount {
-	@Column
+@Table(name="ELEVE")
+@SequenceGenerator(name="ELEVE_GEN",sequenceName="ELEVE_SEQ")
+public class Eleve extends UserAccount {
+	@Column(name="NCS",columnDefinition="Code nationnal de l etudiant")
 	private String nCS; // National code for Student
 
 	public String getnCS() {
@@ -19,7 +23,7 @@ public class UserAccount {
 		this.nCS = nCS;
 	}
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE,generator="ELEVE_GEN")
 	private long id;
 
 	public long getId() {

@@ -9,18 +9,25 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
+@Table(name="AVIS")
+@SequenceGenerator(name="AVIS_GEN",sequenceName="AVIS_SEQ")
 public class Avis {
-	@Column
+	@Column(name="COMMENTAIRE")
 	private String commentaire;
 	@ManyToOne
-    @JoinColumn (name="id")
+    @JoinColumn (name="REF_PROF")
 	private Proffesseur refProfesseur;
 	@ManyToOne
-    @JoinColumn (name="id")
+    @JoinColumn (name="REF_MATIERE")
 	private Matiere refMatiere;
 	@Column
+	@Temporal(TemporalType.DATE)
 	private Date dateAvis;
 
 	public String getCommentaire() {
@@ -55,7 +62,7 @@ public class Avis {
 		this.dateAvis = dateAvis;
 	}
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE,generator="AVIS_GEN")
 	private long id;
 
 	public long getId() {
